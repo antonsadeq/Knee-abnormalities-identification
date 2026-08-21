@@ -1,0 +1,43 @@
+# Only what the code actually imports.
+#
+# Four packages were removed after an install failed on Windows: albumentations pulls albucore, which
+# pulls stringzilla, which ships no Windows wheel and needs MSVC Build Tools to compile — and pip
+# aborts the *entire* pip stage when one wheel fails, so timm and pydicom never installed either.
+# None of the four was ever imported: augmentation is hand-written numpy in `rsna_knee.data`
+# (mirroring has to swap the medial/lateral label pairs, which no generic library will do), DICOM is
+# read with pydicom, the label LLM was reached over HTTP rather than through transformers, and the
+# fold stratifier is greedy multilabel-with-groups, which iterative-stratification does not provide.
+#
+# Verify with `python scripts/check_imports.py` after editing.
+
+name: rsna-knee
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - pyarrow          # every artifact is parquet; pandas needs an engine for that
+  - scipy            # linear_sum_assignment, in the submission column-alignment check
+  - scikit-learn     # roc_auc_score and the severity calibration
+  - tqdm
+  - pyyaml
+  - psutil           # scripts/preflight.py reports RAM
+  - pip:
+      # PyTorch is installed separately so the CUDA build matches the local driver — see docs/setup.md
+      - pydicom
+      - opencv-python-headless   # resize only; INTER_AREA when shrinking
+      - timm                     # encoders
+      - langdetect               # per-language coverage audits
+      - openai                   # scripts/llm_label.py, against a local Ollama endpoint
+      - kaggle
+      - pytest
+      - ruff
+
+# Removed as unused — restore if you need them, but note the Windows build cost:
+#   albumentations            (pulls stringzilla; needs MSVC Build Tools)
+#   SimpleITK                 18.9 MB, never imported
+#   transformers              the LLM pass talks HTTP to Ollama instead
+#   iterative-stratification  rsna_knee.folds implements grouped multilabel stratification directly
+#   matplotlib / seaborn / jupyterlab   no notebook or plot in the pipeline

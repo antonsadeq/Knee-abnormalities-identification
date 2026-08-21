@@ -1,0 +1,8 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+GPU: 31.3 GiB total, 8.4 GiB free now, self-capped at 25% = 7.8 GiB
+fold 0 (fold)  train 3525  val 882  held-out gold 13
+convnext_tiny  28.2M params  batch 2 x accum 4  16 slices/slot  device cuda
+regularisation: drop_path 0.1  slot_dropout 0.1  mirror 0.5  |  slot_embedding True  slice_position True
+
+run tag: M3_f0_convnext_tiny_16sl
+epoch  1/20  loss 0.6141  derived 0.6712  gold 0.7116  (1060s)  weakest: PF OA 0.595, ACL 0.624, Lateral OA 0.629

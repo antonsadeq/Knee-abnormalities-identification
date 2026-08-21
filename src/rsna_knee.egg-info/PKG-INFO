@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: rsna-knee
+Version: 0.1.0
+Summary: RSNA Knee Abnormality Detection (Kaggle 2026)
+Requires-Python: >=3.10
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scikit-learn

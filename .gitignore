@@ -1,0 +1,38 @@
+# Competition data and derived artifacts — never commit
+data/
+artifacts/
+*.dcm
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.parquet
+*.pt
+*.pth
+*.ckpt
+*.onnx
+submission*.csv
+
+# Credentials
+kaggle.json
+.env
+*.token
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

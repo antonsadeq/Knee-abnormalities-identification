@@ -1,0 +1,1 @@
+{"epoch": 1, "loss": 0.61449, "derived": 0.66774, "gold": 0.69373, "lr_head": 5.607e-05, "seconds": 526.8, "per_class_derived": {"ACL": 0.6054, "MCL": 0.6752, "Medial Meniscus": 0.675, "Lateral Meniscus": 0.7066, "Medial OA": 0.6668, "Lateral OA": 0.6302, "PF OA": 0.5814, "Effusion": 0.6583, "Synovitis": 0.6994, "Baker's": 0.7104, "Contusion": 0.7142, "Fracture": 0.6899}}
